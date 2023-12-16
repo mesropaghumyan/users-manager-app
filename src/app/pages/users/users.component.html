@@ -1,13 +1,14 @@
-<div class="bg-slate-800 max-w-screen-xl flex flex-col w-full mx-auto px-4 py-10 gap-y-5">
+<div class="bg-slate-800 mx-auto flex flex-col w-full max-w-screen-xl px-4 py-10 gap-y-5">
   <!-- Header -->
   <div class="pb-5 flex items-center gap-5">
     <svg class="fill-slate-400 w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
-    <p class="text-slate-400 text-xl">Utilisateurs</p>
+    <p class="text-slate-400 text-xl">Users</p>
   </div>
 
   <!-- Filter -->
-  <div class="flex">
-    <input class="rounded mb-5 bg-slate-600 py-1 px-2" matInput #textVal (keyup)="applyFilter(textVal.value)" placeholder="Filter">
+  <div class="flex items-center gap-x-5">
+    <label class="text-slate-400 text-lg" for="filter">Search in table : </label>
+    <input id="filter" class="rounded bg-slate-600 py-2 px-2" matInput #textVal (keyup)="applyFilter(textVal.value)" placeholder="Filter">
   </div>
 
   <div class="mat-elevation-z8">
@@ -50,8 +51,8 @@
 
         <td mat-cell *matCellDef="let element">
           <div class="flex max-lg:flex-col max-lg:gap-y-2 max-lg:my-1 gap-x-2">
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Details</button>
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
+            <button [routerLink]="['/user', element.id]" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Details</button>
+            <button [routerLink]="['/update', element.id]" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
             <button (click)="onDelete(element.id)" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
           </div>
         </td>
@@ -67,4 +68,7 @@
       class="w-full text-slate-200"
     />
   </div>
+
+  <button [routerLink]="['/add']" type="button" class="w-28 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
+
 </div>

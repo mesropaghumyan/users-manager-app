@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {UserInterface} from "../interfaces/user.interface";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,18 @@ export class UserService {
 
   deleteById(id: number): Observable<UserInterface> {
     return this.http.delete<UserInterface>(this.usersUrl + id);
+  }
+
+  addUser(payload: UserInterface): Observable<UserInterface> {
+    const body: HttpParams = new HttpParams()
+      .set('name', payload.name)
+      .set('email', payload.email)
+      .set('password', payload.password)
+      .set('occupation', payload.occupation)
+      .set('bio', payload.bio);
+
+    const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this.http.post<UserInterface>(this.usersUrl, body, { headers });
   }
 }

@@ -8,6 +8,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  id: string | null = null;
   name: string | null = null;
   dropdownStatus: boolean = false;
   mobileBtnStatus: boolean = false;
@@ -38,8 +39,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     const authUser = this.authService.authUser.value;
     console.log(authUser);
-    if (authUser && authUser.name !== undefined) {
+    if (authUser && authUser.name !== undefined && authUser.id !== undefined) {
       this.name = authUser.name;
+      this.id = authUser.id;
     }
   }
 }

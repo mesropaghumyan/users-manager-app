@@ -9,13 +9,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UsersComponent } from './pages/users/users.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
-import { UserUpdateComponent } from './pages/user-update/user-update.component';
+import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSortModule} from "@angular/material/sort";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     RegisterComponent,
     UsersComponent,
     UserDetailsComponent,
-    UserUpdateComponent,
-    NavbarComponent
+    UpdateUserComponent,
+    NavbarComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
