@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {LocalService} from "./local.service";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import {LocalService} from "./local.service";
 export class RegisterService {
   private usersUrl: string = "https://657d98f13e3f5b189462cb9b.mockapi.io/api/v1/users";
 
-  constructor(private http: HttpClient, private localService: LocalService) { }
+  constructor(private http: HttpClient, private localService: LocalService, private authService: AuthService) { }
 
   register(payload: UserInterface): Observable<any> {
     const body: HttpParams = new HttpParams()
@@ -27,7 +28,7 @@ export class RegisterService {
       map((response: UserInterface) => {
         if (response) {
           this.localService.saveData('user', JSON.stringify(response));
-
+          this.authService.authUser.next(response);
           return response;
         } else {
           throw new Error('Internal Server Error');
