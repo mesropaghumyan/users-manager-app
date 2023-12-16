@@ -64,4 +64,26 @@ export class UsersComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
+
+  onDelete(id: number): void {
+    this.userService.deleteById(id).subscribe(
+      (response: UserInterface): void => {
+        const users = this.userService.users.value ?? [];
+        const index = users.findIndex((user: UserInterface) => user.id === String(id));
+        if (index !== -1) {
+          users.splice(index, 1);
+        }
+        this.userService.users.next(users);
+        this.dataSource.data = users;
+
+        if (this.authService.authUser.value && this.authService.authUser.value.id === String(id)) {
+          this.authService.logout();
+        }
+      },
+      (error): void => {
+        console.log(error);
+      }
+    );
+  }
+
 }
