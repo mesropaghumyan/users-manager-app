@@ -1,1 +1,21 @@
-<p>user-details works!</p>
+<div class="bg-slate-800 mx-auto flex flex-col w-full max-w-screen-xl px-4 py-10 gap-y-5">
+  <!-- Header -->
+  <a routerLink="/" class="pb-5 flex items-center gap-5 group">
+    <svg class="fill-slate-400 w-10 group-hover:fill-slate-200 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z"/></svg>
+    <p class="text-slate-400 text-xl mb-0 group-hover:text-slate-200 transition-all" >Back to users list</p>
+  </a>
+
+  <!-- User Details -->
+  <div class="mat-elevation-z8 bg-slate-600 rounded p-5">
+    <h1 class="text-4xl text-slate-200">User Details</h1>
+
+    <mat-divider></mat-divider>
+
+    <div class="mt-5">
+      <h3 class="text-slate-200"><span class="font-bold">Full Name :</span> {{ userDetails?.name }}</h3>
+      <h3 class="text-slate-200"><span class="font-bold">Email :</span>  {{ userDetails?.email }} </h3>
+      <h3 class="text-slate-200"><span class="font-bold">Occupation :</span>  {{ userDetails?.occupation }} </h3>
+      <h3 class="text-slate-200"><span class="font-bold">Bio :</span>  {{ userDetails?.bio }} </h3>
+    </div>
+  </div>
+</div>

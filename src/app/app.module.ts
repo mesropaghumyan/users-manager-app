@@ -17,6 +17,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { AddUserComponent } from './pages/add-user/add-user.component';
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -29,19 +30,20 @@ import { AddUserComponent } from './pages/add-user/add-user.component';
     NavbarComponent,
     AddUserComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    RouterOutlet,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterLink,
-    MatSortModule,
-    MatTableModule,
-    MatPaginatorModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        RouterOutlet,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterLink,
+        MatSortModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatDividerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

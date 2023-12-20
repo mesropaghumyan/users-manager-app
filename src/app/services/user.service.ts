@@ -11,6 +11,8 @@ export class UserService {
 
   public users: BehaviorSubject<UserInterface[] | null> = new BehaviorSubject<UserInterface[] | null>(null);
 
+  public userDetails: BehaviorSubject<UserInterface | null> = new BehaviorSubject<UserInterface | null>(null);
+
   private usersUrl: string = "https://657d98f13e3f5b189462cb9b.mockapi.io/api/v1/users/";
 
   constructor(private http: HttpClient) { }
@@ -34,5 +36,9 @@ export class UserService {
     const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
     return this.http.post<UserInterface>(this.usersUrl, body, { headers });
+  }
+
+  getById(id: string): Observable<UserInterface> {
+    return this.http.get<UserInterface>(this.usersUrl + id);
   }
 }
