@@ -1,0 +1,78 @@
+<form
+  class="flex flex-col gap-5 p-10 rounded bg-gray-900"
+  #f="ngForm"
+  (ngSubmit)="onSubmitUserForm(f)"
+>
+
+  <div>
+    <h1 class="text-slate-200">{{ title }}</h1>
+  </div>
+
+  <div>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="name">Full name</label>
+    <input
+      id="name"
+      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="text"
+      name="name"
+      placeholder="John Doe"
+      [(ngModel)]="user.name"
+      required
+    />
+  </div>
+  <div>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="email">Email</label>
+    <input
+      id="email"
+      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="email"
+      name="email"
+      placeholder="jdoe@mail.com"
+      [(ngModel)]="user.email"
+      required
+    />
+  </div>
+  <div>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="password">Password</label>
+    <input
+      id="password"
+      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="password"
+      name="password"
+      placeholder="••••••••"
+      [(ngModel)]="user.password"
+      required
+    />
+  </div>
+  <div>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="occupation">Occupation</label>
+    <input
+      id="occupation"
+      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="text"
+      name="occupation"
+      placeholder="Front-End Developer"
+      [(ngModel)]="user.occupation"
+      required
+    />
+  </div>
+  <div>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="bio">Bio</label>
+    <input
+      id="bio"
+      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      type="text"
+      name="bio"
+      placeholder="I love Angular ❤️"
+      [(ngModel)]="user.bio"
+      required
+    />
+  </div>
+
+  <button
+    class="bg-green-700 hover:bg-green-600  w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+    type="submit"
+  >
+    {{ btnTitle }}
+  </button>
+</form>

@@ -18,6 +18,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { AddUserComponent } from './pages/users/add-user/add-user.component';
 import {MatDividerModule} from "@angular/material/divider";
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatDividerModule} from "@angular/material/divider";
     UserDetailsComponent,
     UpdateUserComponent,
     NavbarComponent,
-    AddUserComponent
+    AddUserComponent,
+    UserFormComponent,
   ],
     imports: [
         BrowserModule,

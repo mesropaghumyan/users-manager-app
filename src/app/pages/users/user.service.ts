@@ -41,4 +41,37 @@ export class UserService {
   getById(id: string): Observable<UserInterface> {
     return this.http.get<UserInterface>(this.usersUrl + id);
   }
+
+  updateUser(id: string, payload: UserInterface): Observable<UserInterface> {
+    const body: HttpParams = new HttpParams()
+      .set('name', payload.name)
+      .set('email', payload.email)
+      .set('password', payload.password)
+      .set('occupation', payload.occupation)
+      .set('bio', payload.bio);
+
+    const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this.http.put<UserInterface>(this.usersUrl + id, body, { headers });
+  }
+
+  initializeEmptyUser(): UserInterface {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      occupation: '',
+      bio: ''
+    };
+  }
+
+  mapperUser(b: any): UserInterface {
+    return {
+      name: b.name,
+      email: b.email,
+      password: b.password,
+      occupation: b.occupation,
+      bio: b.bio
+    }
+  }
 }
