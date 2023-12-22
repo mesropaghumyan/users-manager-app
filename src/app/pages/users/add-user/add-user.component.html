@@ -1,74 +1,12 @@
-<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto mt-5 lg:py-0">
-  <div class="w-full mx-auto max-w-screen-xl bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-      <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-        Add and account
-      </h1>
-      <form class="space-y-4 md:space-y-6" (ngSubmit)="onSubmitAddUser()" [formGroup]="addUserFormGroup">
-        <div>
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full name</label>
-          <input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John Doe"
-            type="text"
-            name="name"
-            id="name"
-            formControlName="name"
-          />
-        </div>
-        <div>
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-          <input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@company.com"
-            type="email"
-            name="email"
-            id="email"
-            formControlName="email"
-          />
-        </div>
-        <div>
-          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-          <input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="••••••••"
-            formControlName="password"
-          />
-        </div>
-        <div>
-          <label for="occupation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Occupation</label>
-          <input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Front End Developer"
-            type="text"
-            name="occupation"
-            id="occupation"
-            formControlName="occupation"
-          />
-        </div>
-        <div>
-          <label for="bio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bio</label>
-          <input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="I love Angular"
-            type="text"
-            name="bio"
-            id="bio"
-            formControlName="bio"
-          />
-        </div>
-        <button
-          class="disabled:hover:bg-green-800 disabled:bg-green-800 bg-green-700 hover:bg-green-600 w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-          type="submit"
-          [disabled]="addUserFormGroup.invalid"
-        >
-          Add an user
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
+<div class="bg-slate-800 mx-auto flex flex-col w-full max-w-screen-xl px-4 py-10 gap-y-5">
+  <!-- Header -->
+  <a routerLink="/" class="pb-5 flex items-center gap-5 group">
+    <svg class="fill-slate-400 w-10 group-hover:fill-slate-200 transition-all" xmlns="http://www.w3.org/2000/svg"viewBox="0 -960 960 960"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+    <p class="text-slate-400 text-xl mb-0 group-hover:text-slate-200 transition-all" >Back to users list</p>
+  </a>
 
+  <!-- Update User -->
+
+  <app-user-form [mode]="'add'"></app-user-form>
+
+</div>
