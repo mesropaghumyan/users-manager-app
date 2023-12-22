@@ -1,13 +1,14 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort, Sort} from "@angular/material/sort";
-import {UserInterface} from "./user.interface";
-import {MatTableDataSource} from "@angular/material/table";
-import {UserService} from "./user.service";
-import {LiveAnnouncer} from "@angular/cdk/a11y";
-import {Router} from "@angular/router";
-import {AuthService} from "../auth/auth.service";
-import {Subscription} from "rxjs";
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort, Sort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
+import { LiveAnnouncer } from "@angular/cdk/a11y";
+import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
+
+import { UserInterface } from "./user.interface";
+import { UserService } from "./user.service";
+import { AuthService } from "../auth/auth.service";
 
 @Component({
   selector: 'app-users',
@@ -20,34 +21,49 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   public displayedColumns: string[] = ['name', 'email', 'occupation', 'actions'];
   public dataSource: MatTableDataSource<UserInterface> = new MatTableDataSource<UserInterface>([]);
-  public users: UserInterface[] | null = null;
   public usersSubscription!: Subscription;
+  public filterOptions: string[] = ['all', 'name', 'email', 'occupation'];
+  public selectedFilterOption: string = 'all';
 
-  constructor(private userService: UserService, private liveAnnouncer: LiveAnnouncer, private router: Router, private authService: AuthService) {
-    this.userService.getAllUsers().subscribe(
-      (response: UserInterface[]): void => {
-        this.userService.users.next(response);
-        this.dataSource.data = response;
+  constructor(
+    private userService: UserService,
+    private liveAnnouncer: LiveAnnouncer,
+    private router: Router,
+    private authService: AuthService
+  ) { }
+
+  ngOnInit(): void {
+    this.usersSubscription = this.userService.getAllUsers().subscribe(
+      (response: UserInterface[]) => {
+        this.dataSource = new MatTableDataSource<UserInterface>(response);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.setupFilterPredicate();
       },
       (error) => {
         console.log(error);
       }
-    )
-  }
-
-  ngOnInit(): void {
-    this.usersSubscription = this.userService.users.subscribe(
-      users => this.users = users
     );
-
-    this.dataSource.filterPredicate = function (data: UserInterface, filter: string): boolean {
-      return data.email.toLowerCase().includes(filter) || data.occupation.toLowerCase().includes(filter) || data.name.toLowerCase().includes(filter);
-    };
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  private setupFilterPredicate(): void {
+    this.dataSource.filterPredicate = (data: UserInterface, filter: string) => {
+      switch (this.selectedFilterOption) {
+        case 'name':
+          return data.name.toLowerCase().includes(filter);
+        case 'email':
+          return data.email.toLowerCase().includes(filter);
+        case 'occupation':
+          return data.occupation.toLowerCase().includes(filter);
+        default:
+          return JSON.stringify(data).toLowerCase().includes(filter);
+      }
+    };
   }
 
   announceSortChange(sortState: Sort): void {
@@ -60,9 +76,13 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(filterValue: string): void {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
+    filterValue = filterValue.trim().toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+
+  onSelectFilterOption(event: Event) {
+    this.selectedFilterOption = (event.target as HTMLSelectElement).value;
   }
 
   onDelete(id: number): void {

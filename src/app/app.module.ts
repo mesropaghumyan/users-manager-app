@@ -19,6 +19,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { AddUserComponent } from './pages/users/add-user/add-user.component';
 import {MatDividerModule} from "@angular/material/divider";
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
         MatSortModule,
         MatTableModule,
         MatPaginatorModule,
-        MatDividerModule
+        MatDividerModule,
+        MatInputModule
     ],
   providers: [],
   bootstrap: [AppComponent]
