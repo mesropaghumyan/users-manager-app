@@ -28,9 +28,19 @@ export class UsersComponent implements OnInit, AfterViewInit {
   constructor(
     private userService: UserService,
     private liveAnnouncer: LiveAnnouncer,
-    private router: Router,
     private authService: AuthService
-  ) { }
+  )
+  {
+    this.userService.getAllUsers().subscribe(
+      (response: UserInterface[]): void => {
+        this.userService.users.next(response);
+        this.dataSource.data = response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
 
   ngOnInit(): void {
     this.usersSubscription = this.userService.getAllUsers().subscribe(
@@ -90,9 +100,11 @@ export class UsersComponent implements OnInit, AfterViewInit {
       (response: UserInterface): void => {
         const users = this.userService.users.value ?? [];
         const index = users.findIndex((user: UserInterface) => user.id === String(id));
+
         if (index !== -1) {
           users.splice(index, 1);
         }
+
         this.userService.users.next(users);
         this.dataSource.data = users;
 
@@ -103,7 +115,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
       (error): void => {
         console.log(error);
       }
-    );
+    )
+
   }
 
 }
