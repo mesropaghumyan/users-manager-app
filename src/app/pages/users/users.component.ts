@@ -1,12 +1,12 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, Sort} from "@angular/material/sort";
-import {UserInterface} from "../../interfaces/user.interface";
+import {UserInterface} from "./user.interface";
 import {MatTableDataSource} from "@angular/material/table";
-import {UserService} from "../../services/user.service";
+import {UserService} from "./user.service";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {Router} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../auth/auth.service";
 import {Subscription} from "rxjs";
 
 @Component({

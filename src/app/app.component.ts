@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalService} from "./services/local.service";
 import {Subscription} from "rxjs";
-import {AuthService} from "./services/auth.service";
+import {AuthService} from "./pages/auth/auth.service";
 
 @Component({
   selector: 'app-root',

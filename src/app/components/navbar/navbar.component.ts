@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../pages/auth/auth.service";
 import {Subscription} from "rxjs";
 
 @Component({
