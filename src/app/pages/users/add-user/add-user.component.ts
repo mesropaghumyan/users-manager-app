@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserService} from "../../services/user.service";
-import {UserInterface} from "../../interfaces/user.interface";
+import {UserService} from "../user.service";
+import {UserInterface} from "../user.interface";
 
 type AddUserFormGroupInterface = FormGroup<{
   name: FormControl<string | null>,

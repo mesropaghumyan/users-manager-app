@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
-import {RegisterService} from "../../services/register.service";
-import {UserInterface} from "../../interfaces/user.interface";
+import {UserInterface} from "../../users/user.interface";
 
 type RegisterFormGroupInterface = FormGroup<{
   name: FormControl<string | null>,
@@ -41,7 +40,7 @@ const REGISTER_FORM_VALIDATORS = {
 export class RegisterComponent implements OnInit {
   registerFormGroup: RegisterFormGroupInterface;
 
-  constructor(private formBuilder: FormBuilder, private registerService: RegisterService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerFormGroup = this.formBuilder.group(REGISTER_FORM_VALIDATORS)
   }
 
@@ -60,9 +59,10 @@ export class RegisterComponent implements OnInit {
         bio: this.registerFormGroup.value.bio,
       };
 
-      this.registerService.register(payload).subscribe(
+      this.authService.register(payload).subscribe(
         (response) => {
-          this.router.navigate(['/users'])
+          this.router.navigate(['/users']);
+          return response;
         },
         (error) => {
           console.log(error);

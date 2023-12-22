@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
-import {LocalService} from "./local.service";
-import {UserInterface} from "../interfaces/user.interface";
+import {LocalService} from "../../services/local.service";
+import {UserInterface} from "../users/user.interface";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -58,6 +58,29 @@ export class AuthService {
           return user;
         } else {
           throw new Error('Invalid credentials');
+        }
+      })
+    );
+  }
+
+  register(payload: UserInterface): Observable<any> {
+    const body: HttpParams = new HttpParams()
+      .set('name', payload.name)
+      .set('email', payload.email)
+      .set('password', payload.password)
+      .set('occupation', payload.occupation)
+      .set('bio', payload.bio);
+
+    const headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this.http.post<UserInterface>(this.usersUrl, body, { headers }).pipe(
+      map((response: UserInterface) => {
+        if (response) {
+          this.localService.saveData('user', JSON.stringify(response));
+          this.authUser.next(response);
+          return response;
+        } else {
+          throw new Error('Internal Server Error');
         }
       })
     );
