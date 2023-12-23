@@ -1,27 +1,51 @@
-# UsersManagerApp
+# [Users Manager](http://users-manager-app-p2103901-80b754b04a31688dd2c3016322c43e22dc66.pages.univ-lyon1.fr/#/login)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+## 🎯 Objectif
+Cette application Angular vise à gérer efficacement des utilisateurs en effectuant des opérations CRUD (Create, Read, Update, Delete) via des requêtes HTTP vers l'API [MockApi](https://657d98f13e3f5b189462cb9b.mockapi.io/api/v1/users). Conçue pour mettre en avant le développement Front-End, elle offre une interface utilisateur intuitive pour une gestion simplifiée des utilisateurs.
 
-## Development server
+## 🧩 Fonctionnalitées
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+> ⚠️ **Remarque :** La session est gérée localement pour se concentrer sur les aspects Front-End.
 
-## Code scaffolding
+### Authentification
+- Connexion et inscription des utilisateurs.
+- Déconnexion sécurisée.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Gestion des Utilisateurs
+- Ajout, suppression, modification et consultation des détails des utilisateurs.
 
-## Build
+### Fonctionnalités Avancées
+- Filtrage et tri (ascendant/descendant) des utilisateurs par nom, email et profession.
+- Ajustement de la pagination (5, 10, 20 utilisateurs par page).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ⚙️ Technologies
+- **Framework :** [Angular 16.2.5](https://www.npmjs.com/package/@angular/cli/v/16.2.5)
+- **Design :** [Tailwind CSS](https://tailwindcss.com/docs/guides/angular), [Angular Material](https://material.angular.io/)
+- **API :** Utilisation de [MockApi](https://mockapi.io/) pour la création des endpoints nécessaires.
 
-## Running unit tests
+Pour l'API j'ai fait le choix d'utiliser [MockApi](https://mockapi.io/) afin de générer facilement les [endpoints](https://657d98f13e3f5b189462cb9b.mockapi.io/api/v1/users) nécessaire au fonctionnment de l'application.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 💻 Installation locale
 
-## Running end-to-end tests
+### Clonage du projet :
+```bash
+git clone https://forge.univ-lyon1.fr/p2103901/users-manager-app.git
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Installation des dépendances :
+```bash
+npm install
+```
 
-## Further help
+### Démarrage du serveur local :
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🧑🏻‍💻 Feed back
+
+Ce projet m'a permis de renforcer mes compétences en Angular, notamment sur les observables, et de m'initier à TypeScript, que j'intègre désormais dans mes projets Front-End et Back-End avec Node.js.
+
+## 📥 Contact
+
+Pour toute question ou précision, n'hésitez pas à me contacter : <b>mesrop.aghumyan@etu.univ-lyon1.fr</b>.
