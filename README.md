@@ -23,8 +23,6 @@ Cette application Angular vise à gérer efficacement des utilisateurs en effect
 - **Design :** [Tailwind CSS](https://tailwindcss.com/docs/guides/angular), [Angular Material](https://material.angular.io/)
 - **API :** Utilisation de [MockApi](https://mockapi.io/) pour la création des endpoints nécessaires.
 
-Pour l'API j'ai fait le choix d'utiliser [MockApi](https://mockapi.io/) afin de générer facilement les [endpoints](https://657d98f13e3f5b189462cb9b.mockapi.io/api/v1/users) nécessaire au fonctionnment de l'application.
-
 ## 💻 Installation locale
 
 ### Clonage du projet :
