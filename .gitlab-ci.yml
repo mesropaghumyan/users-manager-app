@@ -1,0 +1,20 @@
+image: node:latest
+
+pages:
+  cache:
+    paths:
+      - node_modules/
+
+  stage: deploy
+  script:
+    - npm install -g @angular/cli@16.2.5
+    - npm install
+    - ng build
+    - mkdir -p public
+    - mv dist/users-manager-app/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+    - pages
