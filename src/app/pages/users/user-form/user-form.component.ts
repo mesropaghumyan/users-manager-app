@@ -11,11 +11,6 @@ import {Router} from "@angular/router";
 })
 export class UserFormComponent implements OnInit {
   @Input({required: true}) mode!: 'add' | 'update';
-  @Input({required: false}) name!: string;
-  @Input({required: false}) email!: string;
-  @Input({required: false}) password!: string;
-  @Input({required: false}) occupation!: string;
-  @Input({required: false}) bio!: string;
   @Input({required: false}) id!: string;
 
   @Input({required: false}) user!: UserInterface;
